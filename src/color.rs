@@ -1,4 +1,5 @@
-use egui::{Color32, TextBuffer};
+use egui::Color32;
+use regex::Regex;
 
 // r,g,b: 0..255
 // h: 0..360
@@ -50,11 +51,11 @@ impl Color {
     }
 
     pub fn from_hex(hex: String) -> Option<Self> {
-        if hex.len() != 7 {
-            return None;
-        }
-        if let Some(stripped) = hex.strip_prefix('#') {
-            let [_, r, g, b] = match u32::from_str_radix(stripped.as_str(), 16) {
+        let re = Regex::new(r"#(?:[0-9a-fA-F]{3}){1,2}$").unwrap();
+        if let Some(capture) = re.captures(&hex) {
+            let hex = capture.get(0).unwrap().as_str().to_string();
+            let stripped = hex.strip_prefix('#').unwrap();
+            let [_, r, g, b] = match u32::from_str_radix(stripped, 16) {
                 Ok(r) => r.to_be_bytes(),
                 Err(_) => return None,
             };
@@ -70,13 +71,6 @@ impl Color {
             });
         }
         None
-    }
-
-    pub fn dim(&self) -> Self {
-        let h = (self.h + 180) % 360;
-        let s = 30;
-        let v = 100 - self.v;
-        Color::from_hsv(h, s, v)
     }
 
     pub fn inv(&self) -> Self {

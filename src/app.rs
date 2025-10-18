@@ -6,8 +6,8 @@ use std::{
 
 use eframe::{egui_glow, glow};
 use egui::{
-    Align, Color32, Frame, Grid, Image, ImageButton, Label, Layout, Pos2, Response,
-    Rounding, Sense, Stroke, TextEdit, Vec2,
+    Align, Color32, Frame, Grid, Image, ImageButton, Label, Layout, Pos2, Response, Rounding,
+    Sense, Stroke, TextEdit, Vec2,
 };
 
 use crate::{
