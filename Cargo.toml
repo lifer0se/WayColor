@@ -1,5 +1,5 @@
 [package]
-name = "WayColor"
+name = "waycolor"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,3 +7,4 @@ edition = "2021"
 eframe = "0.28.1"
 egui = "0.28.1"
 egui_extras = { version = "0.28.1", features = [ "image" ]}
+regex = "1.12.2"
