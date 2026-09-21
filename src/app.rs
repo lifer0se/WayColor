@@ -256,7 +256,7 @@ impl App {
         gradient: Arc<Mutex<Gradient>>,
     ) -> Response {
         egui::Frame::default()
-            .stroke(Stroke::new(1.0, Color32::from_black_alpha(255)))
+            .stroke(Stroke::new(1.0_f32, Color32::from_black_alpha(255)))
             .fill(Color32::from_black_alpha(255))
             .inner_margin(0.0)
             .outer_margin(10.0)

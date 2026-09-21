@@ -2,9 +2,17 @@
 name = "waycolor"
 version = "0.1.0"
 edition = "2021"
+description = "A colorpicker made for Hyprland, using hyprpicker"
+license = "MIT"
+repository = "https://github.com/lifer0se/WayColor"
 
 [dependencies]
 eframe = "0.28.1"
 egui = "0.28.1"
 egui_extras = { version = "0.28.1", features = [ "image" ]}
 regex = "1.12.2"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
